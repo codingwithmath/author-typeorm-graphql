@@ -1,0 +1,84 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Genre {
+  id: Int!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  books: Book!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type BookGenre {
+  id: Int!
+  bookId: Float!
+  genreId: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Book {
+  id: Int!
+  title: String!
+  authorId: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  author: Author!
+}
+
+type Author {
+  id: Int!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  authors: [Author!]!
+  author(id: Float!): Author
+  books: [Book!]!
+  genres: [Genre!]!
+  genre(id: Float!): Genre
+  bookGenres: [BookGenre!]!
+  bookGenre(id: Float!): BookGenre
+}
+
+type Mutation {
+  createAuthor(data: AuthorInput!): Author!
+  createBook(data: BookInput!): Book!
+  createGenre(data: GenreInput!): Genre!
+  createBookGenre(data: BookGenreInput!): BookGenre!
+}
+
+input AuthorInput {
+  name: String!
+}
+
+input BookInput {
+  title: String!
+  author: BookAuthorInput!
+}
+
+input BookAuthorInput {
+  connect: BookAuthorConnectInput
+  create: AuthorInput
+}
+
+input BookAuthorConnectInput {
+  id: Float!
+}
+
+input GenreInput {
+  name: String!
+}
+
+input BookGenreInput {
+  genreId: Float!
+  bookId: Float!
+}

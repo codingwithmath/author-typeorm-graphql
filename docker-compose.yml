@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  mysql:
+    container_name: library-db
+    image: mysql:5
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: library
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: America/Sao_Paulo
+    ports:
+      - 3306:3306
